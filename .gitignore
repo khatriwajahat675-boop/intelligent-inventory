@@ -1,0 +1,10 @@
+.env
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+node_modules/
+data/raw/
+data/processed/
+models_artifacts/
+*.pkl

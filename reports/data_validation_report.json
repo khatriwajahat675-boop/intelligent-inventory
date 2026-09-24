@@ -1,0 +1,453 @@
+{
+  "fmcg": {
+    "checks": [
+      {
+        "name": "row count",
+        "status": "PASS",
+        "detail": "100,000 rows, 28 columns"
+      },
+      {
+        "name": "dates parse",
+        "status": "PASS",
+        "detail": "range 2024-01-01 00:00:00 .. 2024-12-30 23:57:00"
+      },
+      {
+        "name": "no future-dated sales (EC-05)",
+        "status": "PASS",
+        "detail": "ok"
+      },
+      {
+        "name": "units > 0 (EC-03)",
+        "status": "PASS",
+        "detail": "min=1"
+      },
+      {
+        "name": "prices > 0",
+        "status": "PASS",
+        "detail": "ok"
+      },
+      {
+        "name": "selling >= cost",
+        "status": "PASS",
+        "detail": "no negative margin"
+      },
+      {
+        "name": "lead time > 0 (FR-010 / EC-16)",
+        "status": "PASS",
+        "detail": "3..14 days"
+      },
+      {
+        "name": "stock on hand >= 0 (EC-11)",
+        "status": "PASS",
+        "detail": "ok"
+      },
+      {
+        "name": "revenue = units x price",
+        "status": "PASS",
+        "detail": "0 mismatches"
+      },
+      {
+        "name": "no fully duplicated lines (EC-02)",
+        "status": "PASS",
+        "detail": "0 duplicates"
+      },
+      {
+        "name": "Invoice_ID unique",
+        "status": "WARN",
+        "detail": "62 repeated ids with different content -> id collisions, not replays; composite external_txn_id generated"
+      },
+      {
+        "name": "external_txn_id unique",
+        "status": "PASS",
+        "detail": "composite idempotency key"
+      },
+      {
+        "name": "missing Customer_Age",
+        "status": "WARN",
+        "detail": "40.1% null (not used by forecasting)"
+      },
+      {
+        "name": "missing Customer_Gender",
+        "status": "WARN",
+        "detail": "5.0% null (not used by forecasting)"
+      },
+      {
+        "name": "intermittent demand (EC-52)",
+        "status": "PASS",
+        "detail": "1.3% of SKU-days have zero sales"
+      }
+    ],
+    "split_method": "chronological (day-aligned)",
+    "split": {
+      "train": {
+        "rows": 70116,
+        "share": 0.7012,
+        "stock_risk_rate": 0.0176,
+        "from": "2024-01-01",
+        "to": "2024-09-12"
+      },
+      "val": {
+        "rows": 14932,
+        "share": 0.1493,
+        "stock_risk_rate": 0.0169,
+        "from": "2024-09-13",
+        "to": "2024-11-05"
+      },
+      "test": {
+        "rows": 14952,
+        "share": 0.1495,
+        "stock_risk_rate": 0.0162,
+        "from": "2024-11-06",
+        "to": "2024-12-30"
+      }
+    },
+    "drift_psi": {
+      "Units": {
+        "val_psi": 0.0002,
+        "test_psi": 0.0001
+      },
+      "Selling_Price": {
+        "val_psi": 0.0005,
+        "test_psi": 0.0013
+      },
+      "Lead_Time_Days": {
+        "val_psi": 0.001,
+        "test_psi": 0.001
+      },
+      "Stock_On_Hand": {
+        "val_psi": 0.0012,
+        "test_psi": 0.0009
+      }
+    },
+    "smote_experiment": [
+      {
+        "model": "logreg",
+        "smote": false,
+        "train_rows_before": 70116,
+        "train_rows_fit": 70116,
+        "train_positive_rate_fit": 0.017613668777454503,
+        "validation": {
+          "precision": 0.01706027493831512,
+          "recall": 0.9603174603174603,
+          "f1": 0.03352497056175106,
+          "pr_auc": 0.018082266334723037,
+          "threshold": 0.012719928109446287,
+          "positives": 252,
+          "n": 14932,
+          "roc_auc": 0.49036617144587175
+        },
+        "test": {
+          "precision": 0.016238831371436675,
+          "recall": 0.9462809917355371,
+          "f1": 0.03192972671500279,
+          "pr_auc": 0.015905462241971074,
+          "threshold": 0.012719928109446287,
+          "positives": 242,
+          "n": 14952,
+          "roc_auc": 0.4859046243911209
+        }
+      },
+      {
+        "model": "logreg",
+        "smote": true,
+        "train_rows_before": 70116,
+        "train_rows_fit": 137762,
+        "train_positive_rate_fit": 0.5,
+        "validation": {
+          "precision": 0.017094649596684674,
+          "recall": 0.9166666666666666,
+          "f1": 0.03356338539774791,
+          "pr_auc": 0.01693993623973877,
+          "threshold": 0.40906450244309633,
+          "positives": 252,
+          "n": 14932,
+          "roc_auc": 0.4818828121621037
+        },
+        "test": {
+          "precision": 0.016333803548890045,
+          "recall": 0.9090909090909091,
+          "f1": 0.032091021807308,
+          "pr_auc": 0.01571088193563061,
+          "threshold": 0.40906450244309633,
+          "positives": 242,
+          "n": 14952,
+          "roc_auc": 0.48201819193105266
+        }
+      },
+      {
+        "model": "rf",
+        "smote": false,
+        "train_rows_before": 70116,
+        "train_rows_fit": 70116,
+        "train_positive_rate_fit": 0.017613668777454503,
+        "validation": {
+          "precision": 0.017798165137614678,
+          "recall": 0.38492063492063494,
+          "f1": 0.03402314977200982,
+          "pr_auc": 0.017367163258177776,
+          "threshold": 0.01788919970164027,
+          "positives": 252,
+          "n": 14932,
+          "roc_auc": 0.4976736516586653
+        },
+        "test": {
+          "precision": 0.014453477868112014,
+          "recall": 0.3305785123966942,
+          "f1": 0.027696036004846807,
+          "pr_auc": 0.01578590397522264,
+          "threshold": 0.01788919970164027,
+          "positives": 242,
+          "n": 14952,
+          "roc_auc": 0.48392671539572224
+        }
+      },
+      {
+        "model": "rf",
+        "smote": true,
+        "train_rows_before": 70116,
+        "train_rows_fit": 137762,
+        "train_positive_rate_fit": 0.5,
+        "validation": {
+          "precision": 0.017482821605636252,
+          "recall": 0.7976190476190477,
+          "f1": 0.034215677930036596,
+          "pr_auc": 0.016799502831138173,
+          "threshold": 0.2842499438598038,
+          "positives": 252,
+          "n": 14932,
+          "roc_auc": 0.5005946974611826
+        },
+        "test": {
+          "precision": 0.01613456917267422,
+          "recall": 0.7768595041322314,
+          "f1": 0.03161257777030436,
+          "pr_auc": 0.016924106709404425,
+          "threshold": 0.2842499438598038,
+          "positives": 242,
+          "n": 14952,
+          "roc_auc": 0.4947210814029923
+        }
+      }
+    ],
+    "seasonality_signal": {
+      "weekday_units_cv": 0.0088,
+      "month_units_cv": 0.026,
+      "note": "coefficient of variation of total units by weekday / month (0 = no seasonality)"
+    }
+  },
+  "grocery": {
+    "checks": [
+      {
+        "name": "row count",
+        "status": "PASS",
+        "detail": "1,000 rows, 39 columns"
+      },
+      {
+        "name": "SKU_ID unique (unique constraint, TRD 11.2)",
+        "status": "PASS",
+        "detail": "1 row per SKU"
+      },
+      {
+        "name": "numeric fields parse (EU format)",
+        "status": "PASS",
+        "detail": "unparseable: none"
+      },
+      {
+        "name": "dates parse",
+        "status": "PASS",
+        "detail": "ok"
+      },
+      {
+        "name": "expiry after receipt",
+        "status": "PASS",
+        "detail": "ok"
+      },
+      {
+        "name": "lead time > 0 (EC-16)",
+        "status": "PASS",
+        "detail": "1..14 days"
+      },
+      {
+        "name": "safety stock >= 0 (EC-59)",
+        "status": "PASS",
+        "detail": "ok"
+      },
+      {
+        "name": "on-hand >= 0 (EC-11)",
+        "status": "PASS",
+        "detail": "ok"
+      },
+      {
+        "name": "reserved <= on-hand (FR-005)",
+        "status": "WARN",
+        "detail": "28 SKUs reserve more than on-hand -> available clamped to 0"
+      },
+      {
+        "name": "supplier id -> name is 1:1",
+        "status": "PASS",
+        "detail": "ok"
+      },
+      {
+        "name": "cost > 0",
+        "status": "PASS",
+        "detail": "ok (needed for order-value limit, EC-64)"
+      },
+      {
+        "name": "class balance (target=stock_risk)",
+        "status": "PASS",
+        "detail": "at-risk 24.3%; raw status counts {'In Stock': 428, 'Expiring Soon': 329, 'Low Stock': 241, 'Out of Stock': 2}"
+      },
+      {
+        "name": "no sales history in file",
+        "status": "WARN",
+        "detail": "single snapshot per SKU -> cannot train ARIMA/Prophet on it; used for master data, opening balances and the stock-risk classifier"
+      }
+    ],
+    "split_method": "stratified by ['Category', 'stock_risk'] (seed=42)",
+    "split": {
+      "train": {
+        "rows": 704,
+        "share": 0.704,
+        "stock_risk_rate": 0.2457
+      },
+      "val": {
+        "rows": 148,
+        "share": 0.148,
+        "stock_risk_rate": 0.2365
+      },
+      "test": {
+        "rows": 148,
+        "share": 0.148,
+        "stock_risk_rate": 0.2365
+      }
+    },
+    "drift_psi": {
+      "Avg_Daily_Sales": {
+        "val_psi": 0.0809,
+        "test_psi": 0.1134
+      },
+      "Lead_Time_Days": {
+        "val_psi": 0.0339,
+        "test_psi": 0.0218
+      },
+      "Unit_Cost_USD": {
+        "val_psi": 0.0954,
+        "test_psi": 0.0433
+      },
+      "Safety_Stock": {
+        "val_psi": 0.0388,
+        "test_psi": 0.0936
+      }
+    },
+    "smote_experiment": [
+      {
+        "model": "logreg",
+        "smote": false,
+        "train_rows_before": 704,
+        "train_rows_fit": 704,
+        "train_positive_rate_fit": 0.24573863636363635,
+        "validation": {
+          "precision": 0.717948717948718,
+          "recall": 0.8,
+          "f1": 0.7567567567567568,
+          "pr_auc": 0.8333298777255733,
+          "threshold": 0.4476962510508283,
+          "positives": 35,
+          "n": 148,
+          "roc_auc": 0.9208596713021492
+        },
+        "test": {
+          "precision": 0.8846153846153846,
+          "recall": 0.6571428571428571,
+          "f1": 0.7540983606557377,
+          "pr_auc": 0.859046790429201,
+          "threshold": 0.4476962510508283,
+          "positives": 35,
+          "n": 148,
+          "roc_auc": 0.9304677623261695
+        }
+      },
+      {
+        "model": "logreg",
+        "smote": true,
+        "train_rows_before": 704,
+        "train_rows_fit": 1062,
+        "train_positive_rate_fit": 0.5,
+        "validation": {
+          "precision": 0.7073170731707317,
+          "recall": 0.8285714285714286,
+          "f1": 0.7631578947368421,
+          "pr_auc": 0.844154571070848,
+          "threshold": 0.6865841918172186,
+          "positives": 35,
+          "n": 148,
+          "roc_auc": 0.9223767383059418
+        },
+        "test": {
+          "precision": 0.8148148148148148,
+          "recall": 0.6285714285714286,
+          "f1": 0.7096774193548387,
+          "pr_auc": 0.8596919951671446,
+          "threshold": 0.6865841918172186,
+          "positives": 35,
+          "n": 148,
+          "roc_auc": 0.9329962073324904
+        }
+      },
+      {
+        "model": "rf",
+        "smote": false,
+        "train_rows_before": 704,
+        "train_rows_fit": 704,
+        "train_positive_rate_fit": 0.24573863636363635,
+        "validation": {
+          "precision": 0.8918918918918919,
+          "recall": 0.9428571428571428,
+          "f1": 0.9166666666666666,
+          "pr_auc": 0.9719746625509331,
+          "threshold": 0.45776996455761326,
+          "positives": 35,
+          "n": 148,
+          "roc_auc": 0.9906447534766119
+        },
+        "test": {
+          "precision": 1.0,
+          "recall": 0.8285714285714286,
+          "f1": 0.90625,
+          "pr_auc": 0.9577958762019483,
+          "threshold": 0.45776996455761326,
+          "positives": 35,
+          "n": 148,
+          "roc_auc": 0.9812895069532237
+        }
+      },
+      {
+        "model": "rf",
+        "smote": true,
+        "train_rows_before": 704,
+        "train_rows_fit": 1062,
+        "train_positive_rate_fit": 0.5,
+        "validation": {
+          "precision": 0.8717948717948718,
+          "recall": 0.9714285714285714,
+          "f1": 0.918918918918919,
+          "pr_auc": 0.9805566165345595,
+          "threshold": 0.4598950300168084,
+          "positives": 35,
+          "n": 148,
+          "roc_auc": 0.9929203539823009
+        },
+        "test": {
+          "precision": 0.96875,
+          "recall": 0.8857142857142857,
+          "f1": 0.9253731343283582,
+          "pr_auc": 0.9758487907446167,
+          "threshold": 0.4598950300168084,
+          "positives": 35,
+          "n": 148,
+          "roc_auc": 0.9908975979772441
+        }
+      }
+    ]
+  }
+}

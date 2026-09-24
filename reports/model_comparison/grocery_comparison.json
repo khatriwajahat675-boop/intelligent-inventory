@@ -1,0 +1,609 @@
+{
+  "dataset": "grocery",
+  "num_cols": [
+    "Avg_Daily_Sales",
+    "Lead_Time_Days",
+    "Supplier_OnTime_Pct",
+    "Order_Frequency_per_month",
+    "Stock_Age_Days",
+    "Unit_Cost_USD",
+    "SKU_Churn_Rate",
+    "Quantity_Reserved",
+    "Returns_Qty"
+  ],
+  "cat_cols": [
+    "Category",
+    "ABC_Class",
+    "Warehouse_ID",
+    "Supplier_ID"
+  ],
+  "max_train_rows": 20506,
+  "n_train_before_smote": 20506,
+  "known_limitation": null,
+  "best_model_by_test_f1": "hist_gradient_boosting",
+  "interpretability": {
+    "method": "permutation_importance (shap not installed - see module docstring)",
+    "sample_size": 148,
+    "ranked_features": [
+      {
+        "feature": "Lead_Time_Days",
+        "importance": 0.40281,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "SKU_Churn_Rate",
+        "importance": 0.11214,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "Avg_Daily_Sales",
+        "importance": 0.00907,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "Order_Frequency_per_month",
+        "importance": 0.00638,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "Supplier_OnTime_Pct",
+        "importance": 0.00594,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "Unit_Cost_USD",
+        "importance": 0.00572,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "Quantity_Reserved",
+        "importance": 0.00386,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "Returns_Qty",
+        "importance": 0.00243,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "ABC_Class=C",
+        "importance": 0.00202,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "Warehouse_ID=WHSBY",
+        "importance": 0.0013,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "ABC_Class=A",
+        "importance": 0.00098,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "Stock_Age_Days",
+        "importance": 0.00095,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "ABC_Class=B",
+        "importance": 0.00092,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "Category=Frozen",
+        "importance": 0.0007,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "Warehouse_ID=WHMDN",
+        "importance": 0.00063,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "Warehouse_ID=WHBDG",
+        "importance": 0.0006,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "Category=Household",
+        "importance": 0.00054,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "Supplier_ID=S006",
+        "importance": 0.00054,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "Supplier_ID=S010",
+        "importance": 0.00035,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "Supplier_ID=S003",
+        "importance": 6e-05,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "Supplier_ID=S009",
+        "importance": 0.0,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "Supplier_ID=S002",
+        "importance": -0.00016,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "Category=Seafood",
+        "importance": -0.00025,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "Category=Dairy",
+        "importance": -0.00032,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "Supplier_ID=S005",
+        "importance": -0.00041,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "Supplier_ID=S007",
+        "importance": -0.00041,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "Category=Fresh Produce",
+        "importance": -0.00044,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "Supplier_ID=S001",
+        "importance": -0.00044,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "Category=Bakery",
+        "importance": -0.00044,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "Supplier_ID=S008",
+        "importance": -0.00047,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "Category=Meat",
+        "importance": -0.00054,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "Supplier_ID=S004",
+        "importance": -0.0007,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "Category=Personal Care",
+        "importance": -0.00092,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "Warehouse_ID=WHDPS",
+        "importance": -0.00111,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "Category=Pantry",
+        "importance": -0.00142,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "Warehouse_ID=WHJKT",
+        "importance": -0.00345,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "Category=Beverages",
+        "importance": -0.00376,
+        "signed_mean_effect": null
+      }
+    ],
+    "partial_dependence_top4": [
+      {
+        "feature": "Lead_Time_Days",
+        "grid": [
+          -1.2156,
+          -0.8144,
+          -0.4133,
+          -0.0121,
+          0.3891,
+          1.1914,
+          2.3949,
+          3.9996
+        ],
+        "average_prediction": [
+          -4.5472,
+          -3.5459,
+          -2.3868,
+          -1.3948,
+          -0.0557,
+          2.4357,
+          5.0387,
+          6.2796
+        ]
+      },
+      {
+        "feature": "SKU_Churn_Rate",
+        "grid": [
+          -0.082,
+          -0.0748,
+          -0.0676,
+          -0.0603,
+          -0.0531,
+          -0.0459,
+          -0.0387,
+          -0.0315,
+          -0.0243,
+          -0.0171,
+          -0.0099,
+          -0.0027,
+          0.0046,
+          0.0118,
+          0.019
+        ],
+        "average_prediction": [
+          -1.5225,
+          -1.7009,
+          -1.4473,
+          -0.9489,
+          -0.5203,
+          -0.0068,
+          0.3663,
+          0.6799,
+          0.9462,
+          1.2569,
+          1.5378,
+          1.5636,
+          1.712,
+          1.7467,
+          1.984
+        ]
+      },
+      {
+        "feature": "Avg_Daily_Sales",
+        "grid": [
+          -1.2145,
+          -0.9384,
+          -0.6622,
+          -0.3861,
+          -0.11,
+          0.1661,
+          0.4423,
+          0.7184,
+          0.9945,
+          1.2706,
+          1.5467,
+          1.8229,
+          2.099,
+          2.3751,
+          2.6512
+        ],
+        "average_prediction": [
+          0.3536,
+          -0.0933,
+          -0.5505,
+          -0.4909,
+          -0.536,
+          -0.429,
+          -0.3804,
+          -0.4103,
+          -0.1542,
+          0.0816,
+          0.2504,
+          0.2335,
+          0.2576,
+          1.0234,
+          1.1311
+        ]
+      },
+      {
+        "feature": "Order_Frequency_per_month",
+        "grid": [
+          -1.1679,
+          -0.8861,
+          -0.6044,
+          -0.3226,
+          -0.0408,
+          0.2409,
+          0.5227,
+          0.8044,
+          1.0862,
+          1.368,
+          1.6497,
+          1.9315,
+          2.2133,
+          2.495,
+          2.7768
+        ],
+        "average_prediction": [
+          -0.4432,
+          -0.5213,
+          -0.2882,
+          -0.2517,
+          -0.2265,
+          -0.0834,
+          -0.024,
+          -0.0122,
+          0.1267,
+          0.2796,
+          0.3303,
+          0.1502,
+          0.133,
+          -0.0478,
+          0.0801
+        ]
+      }
+    ]
+  },
+  "learning_curve": {
+    "fractions": [
+      0.05,
+      0.1,
+      0.25,
+      0.5,
+      1.0
+    ],
+    "test_f1": [
+      0.7241,
+      0.8136,
+      0.8788,
+      0.8529,
+      0.8571
+    ]
+  },
+  "results": [
+    {
+      "model": "baseline_majority",
+      "fit_seconds": 0.001,
+      "train_rows_used": 31040,
+      "train_positive_rate": 0.5,
+      "validation": {
+        "threshold": 0.0,
+        "precision": 0.2365,
+        "recall": 1.0,
+        "f1": 0.3825,
+        "roc_auc": 0.5,
+        "pr_auc": 0.2365,
+        "confidence_mean": 0.0,
+        "support_negative": 113,
+        "support_positive": 35,
+        "confusion_matrix": {
+          "tp": 35,
+          "fp": 113,
+          "tn": 0,
+          "fn": 0
+        }
+      },
+      "test": {
+        "threshold": 0.0,
+        "precision": 0.2365,
+        "recall": 1.0,
+        "f1": 0.3825,
+        "roc_auc": 0.5,
+        "pr_auc": 0.2365,
+        "confidence_mean": 0.0,
+        "support_negative": 113,
+        "support_positive": 35,
+        "confusion_matrix": {
+          "tp": 35,
+          "fp": 113,
+          "tn": 0,
+          "fn": 0
+        }
+      }
+    },
+    {
+      "model": "logistic_regression",
+      "fit_seconds": 0.228,
+      "train_rows_used": 31040,
+      "train_positive_rate": 0.5,
+      "validation": {
+        "threshold": 0.5861,
+        "precision": 0.6444,
+        "recall": 0.8286,
+        "f1": 0.725,
+        "roc_auc": 0.9052,
+        "pr_auc": 0.8175,
+        "confidence_mean": 0.8451,
+        "support_negative": 113,
+        "support_positive": 35,
+        "confusion_matrix": {
+          "tp": 29,
+          "fp": 16,
+          "tn": 97,
+          "fn": 6
+        }
+      },
+      "test": {
+        "threshold": 0.5861,
+        "precision": 0.7576,
+        "recall": 0.7143,
+        "f1": 0.7353,
+        "roc_auc": 0.9446,
+        "pr_auc": 0.8769,
+        "confidence_mean": 0.8237,
+        "support_negative": 113,
+        "support_positive": 35,
+        "confusion_matrix": {
+          "tp": 25,
+          "fp": 8,
+          "tn": 105,
+          "fn": 10
+        }
+      }
+    },
+    {
+      "model": "decision_tree",
+      "fit_seconds": 0.202,
+      "train_rows_used": 31040,
+      "train_positive_rate": 0.5,
+      "validation": {
+        "threshold": 0.4842,
+        "precision": 0.75,
+        "recall": 0.9429,
+        "f1": 0.8354,
+        "roc_auc": 0.9399,
+        "pr_auc": 0.8269,
+        "confidence_mean": 0.8943,
+        "support_negative": 113,
+        "support_positive": 35,
+        "confusion_matrix": {
+          "tp": 33,
+          "fp": 11,
+          "tn": 102,
+          "fn": 2
+        }
+      },
+      "test": {
+        "threshold": 0.4842,
+        "precision": 0.7209,
+        "recall": 0.8857,
+        "f1": 0.7949,
+        "roc_auc": 0.957,
+        "pr_auc": 0.8731,
+        "confidence_mean": 0.8874,
+        "support_negative": 113,
+        "support_positive": 35,
+        "confusion_matrix": {
+          "tp": 31,
+          "fp": 12,
+          "tn": 101,
+          "fn": 4
+        }
+      }
+    },
+    {
+      "model": "random_forest",
+      "fit_seconds": 4.886,
+      "train_rows_used": 31040,
+      "train_positive_rate": 0.5,
+      "validation": {
+        "threshold": 0.5515,
+        "precision": 0.9118,
+        "recall": 0.8857,
+        "f1": 0.8986,
+        "roc_auc": 0.9783,
+        "pr_auc": 0.946,
+        "confidence_mean": 0.7665,
+        "support_negative": 113,
+        "support_positive": 35,
+        "confusion_matrix": {
+          "tp": 31,
+          "fp": 3,
+          "tn": 110,
+          "fn": 4
+        }
+      },
+      "test": {
+        "threshold": 0.5515,
+        "precision": 0.875,
+        "recall": 0.8,
+        "f1": 0.8358,
+        "roc_auc": 0.9818,
+        "pr_auc": 0.9418,
+        "confidence_mean": 0.7784,
+        "support_negative": 113,
+        "support_positive": 35,
+        "confusion_matrix": {
+          "tp": 28,
+          "fp": 4,
+          "tn": 109,
+          "fn": 7
+        }
+      }
+    },
+    {
+      "model": "hist_gradient_boosting",
+      "fit_seconds": 1.112,
+      "train_rows_used": 31040,
+      "train_positive_rate": 0.5,
+      "validation": {
+        "threshold": 0.4985,
+        "precision": 0.8889,
+        "recall": 0.9143,
+        "f1": 0.9014,
+        "roc_auc": 0.982,
+        "pr_auc": 0.9578,
+        "confidence_mean": 0.9259,
+        "support_negative": 113,
+        "support_positive": 35,
+        "confusion_matrix": {
+          "tp": 32,
+          "fp": 4,
+          "tn": 109,
+          "fn": 3
+        }
+      },
+      "test": {
+        "threshold": 0.4985,
+        "precision": 0.9062,
+        "recall": 0.8286,
+        "f1": 0.8657,
+        "roc_auc": 0.9843,
+        "pr_auc": 0.9567,
+        "confidence_mean": 0.9278,
+        "support_negative": 113,
+        "support_positive": 35,
+        "confusion_matrix": {
+          "tp": 29,
+          "fp": 3,
+          "tn": 110,
+          "fn": 6
+        }
+      }
+    },
+    {
+      "model": "mlp_neural_net",
+      "fit_seconds": 6.642,
+      "train_rows_used": 31040,
+      "train_positive_rate": 0.5,
+      "validation": {
+        "threshold": 0.2013,
+        "precision": 0.5581,
+        "recall": 0.6857,
+        "f1": 0.6154,
+        "roc_auc": 0.841,
+        "pr_auc": 0.6785,
+        "confidence_mean": 0.9386,
+        "support_negative": 113,
+        "support_positive": 35,
+        "confusion_matrix": {
+          "tp": 24,
+          "fp": 19,
+          "tn": 94,
+          "fn": 11
+        }
+      },
+      "test": {
+        "threshold": 0.2013,
+        "precision": 0.6136,
+        "recall": 0.7714,
+        "f1": 0.6835,
+        "roc_auc": 0.8837,
+        "pr_auc": 0.6822,
+        "confidence_mean": 0.9379,
+        "support_negative": 113,
+        "support_positive": 35,
+        "confusion_matrix": {
+          "tp": 27,
+          "fp": 17,
+          "tn": 96,
+          "fn": 8
+        }
+      }
+    }
+  ]
+}

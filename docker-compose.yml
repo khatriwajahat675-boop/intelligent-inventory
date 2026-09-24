@@ -1,0 +1,33 @@
+# Baseline from TRD 17.2: frontend, api, worker, scheduler/beat, postgres, redis, reverse proxy
+services:
+  postgres:
+    image: postgres:16
+    env_file: .env
+    volumes: [pgdata:/var/lib/postgresql/data]
+    healthcheck: {test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER}"], interval: 5s, retries: 10}
+  redis:
+    image: redis:7
+    healthcheck: {test: ["CMD", "redis-cli", "ping"], interval: 5s, retries: 10}
+  api:
+    build: {context: ., dockerfile: infra/Dockerfile.backend}
+    env_file: .env
+    depends_on: {postgres: {condition: service_healthy}, redis: {condition: service_healthy}}
+    ports: ["8000:8000"]
+  worker:
+    build: {context: ., dockerfile: infra/Dockerfile.backend}
+    command: celery -A worker.celery_app worker --loglevel=INFO --concurrency=2
+    env_file: .env
+    depends_on: {postgres: {condition: service_healthy}, redis: {condition: service_healthy}}
+  scheduler:
+    build: {context: ., dockerfile: infra/Dockerfile.backend}
+    command: celery -A worker.celery_app beat --loglevel=INFO      # exactly ONE beat instance
+    env_file: .env
+    depends_on: [redis]
+  proxy:
+    image: nginx:1.27
+    volumes: ["./infra/nginx.conf:/etc/nginx/conf.d/default.conf:ro"]
+    ports: ["8080:80"]
+    depends_on: [api]
+  # frontend:  (React/Next.js - build context ./frontend, see docs/ROADMAP.md)
+volumes:
+  pgdata:

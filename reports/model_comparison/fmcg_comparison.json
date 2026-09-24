@@ -1,0 +1,524 @@
+{
+  "dataset": "fmcg",
+  "num_cols": [
+    "Units",
+    "Cost_Price",
+    "Selling_Price",
+    "Lead_Time_Days",
+    "month",
+    "dow",
+    "hour"
+  ],
+  "cat_cols": [
+    "Category",
+    "Brand",
+    "City",
+    "Store_Format",
+    "Channel"
+  ],
+  "max_train_rows": 150000,
+  "n_train_before_smote": 150000,
+  "known_limitation": "label unlearnable - see docs/STATUS.md",
+  "best_model_by_test_f1": "decision_tree",
+  "interpretability": {
+    "method": "permutation_importance (shap not installed - see module docstring)",
+    "sample_size": 300,
+    "ranked_features": [
+      {
+        "feature": "Category=Vegetables",
+        "importance": 0.04178,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "Brand=Amul",
+        "importance": 0.01339,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "Brand=Nestle",
+        "importance": 0.01161,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "Units",
+        "importance": 0.0039,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "Lead_Time_Days",
+        "importance": 0.00331,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "Brand=ITC",
+        "importance": 0.00161,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "City=Kolkata",
+        "importance": 0.00042,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "month",
+        "importance": 0.0,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "Channel=Omnichannel",
+        "importance": 0.0,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "Channel=Online",
+        "importance": 0.0,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "Category=Dairy",
+        "importance": 0.0,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "Store_Format=Hyper",
+        "importance": 0.0,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "Store_Format=Express",
+        "importance": 0.0,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "Brand=Parle",
+        "importance": 0.0,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "Brand=PepsiCo",
+        "importance": 0.0,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "City=Ahmedabad",
+        "importance": 0.0,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "Brand=Tata",
+        "importance": 0.0,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "City=Delhi",
+        "importance": 0.0,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "City=Chennai",
+        "importance": 0.0,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "City=Pune",
+        "importance": 0.0,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "City=Mumbai",
+        "importance": 0.0,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "Cost_Price",
+        "importance": 0.0,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "dow",
+        "importance": 0.0,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "Brand=Britannia",
+        "importance": 0.0,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "Brand=HUL",
+        "importance": 0.0,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "Category=Home Care",
+        "importance": 0.0,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "Category=Fruits",
+        "importance": 0.0,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "Category=Snacks",
+        "importance": 0.0,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "Category=Personal Care",
+        "importance": 0.0,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "Category=Beverages",
+        "importance": 0.0,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "hour",
+        "importance": 0.0,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "City=Hyderabad",
+        "importance": -0.00038,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "City=Bengaluru",
+        "importance": -0.00042,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "Selling_Price",
+        "importance": -0.00212,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "Channel=Offline",
+        "importance": -0.00356,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "Category=Grocery",
+        "importance": -0.02047,
+        "signed_mean_effect": null
+      },
+      {
+        "feature": "Store_Format=Super",
+        "importance": -0.18847,
+        "signed_mean_effect": null
+      }
+    ],
+    "partial_dependence_top4": [
+      {
+        "feature": "Category=Vegetables",
+        "grid": [
+          0.0,
+          1.0
+        ],
+        "average_prediction": [
+          0.3887,
+          0.0627
+        ]
+      },
+      {
+        "feature": "Brand=Amul",
+        "grid": [
+          0.0,
+          1.0
+        ],
+        "average_prediction": [
+          0.3513,
+          0.3612
+        ]
+      },
+      {
+        "feature": "Brand=Nestle",
+        "grid": [
+          0.0,
+          1.0
+        ],
+        "average_prediction": [
+          0.3699,
+          0.1774
+        ]
+      },
+      {
+        "feature": "Units",
+        "grid": [
+          -1.623,
+          -0.8115,
+          0.0001,
+          0.8116,
+          1.6232
+        ],
+        "average_prediction": [
+          0.3469,
+          0.3469,
+          0.3469,
+          0.3469,
+          0.3635
+        ]
+      }
+    ]
+  },
+  "learning_curve": {
+    "fractions": [
+      0.05,
+      0.1,
+      0.25,
+      0.5,
+      1.0
+    ],
+    "test_f1": [
+      0.0334,
+      0.0319,
+      0.0319,
+      0.0315,
+      0.0317
+    ]
+  },
+  "results": [
+    {
+      "model": "baseline_majority",
+      "fit_seconds": 0.005,
+      "train_rows_used": 298672,
+      "train_positive_rate": 0.5,
+      "validation": {
+        "threshold": 0.0,
+        "precision": 0.0169,
+        "recall": 1.0,
+        "f1": 0.0332,
+        "roc_auc": 0.5,
+        "pr_auc": 0.0169,
+        "confidence_mean": 0.0,
+        "support_negative": 14680,
+        "support_positive": 252,
+        "confusion_matrix": {
+          "tp": 252,
+          "fp": 14680,
+          "tn": 0,
+          "fn": 0
+        }
+      },
+      "test": {
+        "threshold": 0.0,
+        "precision": 0.0162,
+        "recall": 1.0,
+        "f1": 0.0319,
+        "roc_auc": 0.5,
+        "pr_auc": 0.0162,
+        "confidence_mean": 0.0,
+        "support_negative": 14710,
+        "support_positive": 242,
+        "confusion_matrix": {
+          "tp": 242,
+          "fp": 14710,
+          "tn": 0,
+          "fn": 0
+        }
+      }
+    },
+    {
+      "model": "logistic_regression",
+      "fit_seconds": 0.868,
+      "train_rows_used": 298672,
+      "train_positive_rate": 0.5,
+      "validation": {
+        "threshold": 0.3714,
+        "precision": 0.0182,
+        "recall": 0.7103,
+        "f1": 0.0354,
+        "roc_auc": 0.4996,
+        "pr_auc": 0.0163,
+        "confidence_mean": 0.5596,
+        "support_negative": 14680,
+        "support_positive": 252,
+        "confusion_matrix": {
+          "tp": 179,
+          "fp": 9676,
+          "tn": 5004,
+          "fn": 73
+        }
+      },
+      "test": {
+        "threshold": 0.3714,
+        "precision": 0.0159,
+        "recall": 0.6074,
+        "f1": 0.031,
+        "roc_auc": 0.4894,
+        "pr_auc": 0.0157,
+        "confidence_mean": 0.5649,
+        "support_negative": 14710,
+        "support_positive": 242,
+        "confusion_matrix": {
+          "tp": 147,
+          "fp": 9084,
+          "tn": 5626,
+          "fn": 95
+        }
+      }
+    },
+    {
+      "model": "decision_tree",
+      "fit_seconds": 2.18,
+      "train_rows_used": 298672,
+      "train_positive_rate": 0.5,
+      "validation": {
+        "threshold": 0.1963,
+        "precision": 0.017,
+        "recall": 0.8175,
+        "f1": 0.0333,
+        "roc_auc": 0.4919,
+        "pr_auc": 0.0166,
+        "confidence_mean": 0.5044,
+        "support_negative": 14680,
+        "support_positive": 252,
+        "confusion_matrix": {
+          "tp": 206,
+          "fp": 11902,
+          "tn": 2778,
+          "fn": 46
+        }
+      },
+      "test": {
+        "threshold": 0.1963,
+        "precision": 0.0164,
+        "recall": 0.8306,
+        "f1": 0.0322,
+        "roc_auc": 0.4872,
+        "pr_auc": 0.0155,
+        "confidence_mean": 0.5017,
+        "support_negative": 14710,
+        "support_positive": 242,
+        "confusion_matrix": {
+          "tp": 201,
+          "fp": 12052,
+          "tn": 2658,
+          "fn": 41
+        }
+      }
+    },
+    {
+      "model": "random_forest",
+      "fit_seconds": 57.296,
+      "train_rows_used": 298672,
+      "train_positive_rate": 0.5,
+      "validation": {
+        "threshold": 0.1543,
+        "precision": 0.0174,
+        "recall": 0.8651,
+        "f1": 0.0341,
+        "roc_auc": 0.4805,
+        "pr_auc": 0.0156,
+        "confidence_mean": 0.3846,
+        "support_negative": 14680,
+        "support_positive": 252,
+        "confusion_matrix": {
+          "tp": 218,
+          "fp": 12325,
+          "tn": 2355,
+          "fn": 34
+        }
+      },
+      "test": {
+        "threshold": 0.1543,
+        "precision": 0.0161,
+        "recall": 0.8471,
+        "f1": 0.0317,
+        "roc_auc": 0.4987,
+        "pr_auc": 0.0159,
+        "confidence_mean": 0.3804,
+        "support_negative": 14710,
+        "support_positive": 242,
+        "confusion_matrix": {
+          "tp": 205,
+          "fp": 12501,
+          "tn": 2209,
+          "fn": 37
+        }
+      }
+    },
+    {
+      "model": "hist_gradient_boosting",
+      "fit_seconds": 7.269,
+      "train_rows_used": 298672,
+      "train_positive_rate": 0.5,
+      "validation": {
+        "threshold": 0.0042,
+        "precision": 0.0175,
+        "recall": 0.9563,
+        "f1": 0.0345,
+        "roc_auc": 0.4922,
+        "pr_auc": 0.0162,
+        "confidence_mean": 0.1054,
+        "support_negative": 14680,
+        "support_positive": 252,
+        "confusion_matrix": {
+          "tp": 241,
+          "fp": 13496,
+          "tn": 1184,
+          "fn": 11
+        }
+      },
+      "test": {
+        "threshold": 0.0042,
+        "precision": 0.0161,
+        "recall": 0.9174,
+        "f1": 0.0316,
+        "roc_auc": 0.4978,
+        "pr_auc": 0.0167,
+        "confidence_mean": 0.1017,
+        "support_negative": 14710,
+        "support_positive": 242,
+        "confusion_matrix": {
+          "tp": 222,
+          "fp": 13599,
+          "tn": 1111,
+          "fn": 20
+        }
+      }
+    },
+    {
+      "model": "mlp_neural_net",
+      "fit_seconds": 49.142,
+      "train_rows_used": 298672,
+      "train_positive_rate": 0.5,
+      "validation": {
+        "threshold": 0.0003,
+        "precision": 0.0295,
+        "recall": 0.0873,
+        "f1": 0.044,
+        "roc_auc": 0.5041,
+        "pr_auc": 0.0203,
+        "confidence_mean": 0.9611,
+        "support_negative": 14680,
+        "support_positive": 252,
+        "confusion_matrix": {
+          "tp": 22,
+          "fp": 725,
+          "tn": 13955,
+          "fn": 230
+        }
+      },
+      "test": {
+        "threshold": 0.0003,
+        "precision": 0.0195,
+        "recall": 0.0661,
+        "f1": 0.0301,
+        "roc_auc": 0.5039,
+        "pr_auc": 0.0168,
+        "confidence_mean": 0.9609,
+        "support_negative": 14710,
+        "support_positive": 242,
+        "confusion_matrix": {
+          "tp": 16,
+          "fp": 806,
+          "tn": 13904,
+          "fn": 226
+        }
+      }
+    }
+  ]
+}

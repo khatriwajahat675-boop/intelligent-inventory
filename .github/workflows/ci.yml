@@ -1,0 +1,28 @@
+name: ci
+on: [push, pull_request]
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env: {POSTGRES_USER: t, POSTGRES_PASSWORD: t, POSTGRES_DB: t}
+        ports: ["5432:5432"]
+        options: --health-cmd "pg_isready -U t" --health-interval 5s --health-retries 10
+    env:
+      DATABASE_URL: postgresql+psycopg://t:t@localhost:5432/t
+      JWT_SECRET: ci-secret-ci-secret-ci-secret-ci-secret
+      PYTHONPATH: .
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11", cache: pip}
+      - run: pip install -r backend/requirements-dev.txt
+      - run: ruff check backend ml worker scripts                       # lint
+      - run: python -m compileall -q backend ml worker scripts          # syntax / import smoke
+      - run: pytest backend/tests ml/tests -q                           # unit + API + model tests
+      - run: python -c "from backend.app.db import init_engine, Base; import backend.app.models.entities as m; e=init_engine(); Base.metadata.drop_all(e); Base.metadata.create_all(e)"   # clean-schema migration check
+      - run: pip-audit -r backend/requirements.txt || true              # dependency scan (non-blocking)
+      - run: PYTHONPATH=. python scripts/prepare_datasets.py            # forecast/data smoke test
+        if: hashFiles('data/raw/*.csv') != ''
+      - run: docker build -f infra/Dockerfile.backend -t inventory-api .

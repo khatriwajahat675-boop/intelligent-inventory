@@ -1,0 +1,55 @@
+{
+  "candidates": [
+    {
+      "model": "tfidf",
+      "available": true,
+      "purity_at_k": 0.3249,
+      "rows_per_sec": 9920.9,
+      "embed_dim": 64,
+      "seconds_for_sample": 0.302
+    },
+    {
+      "model": "sentence-transformers/all-MiniLM-L6-v2",
+      "available": true,
+      "purity_at_k": 0.4865,
+      "rows_per_sec": 80.4,
+      "embed_dim": 384,
+      "seconds_for_sample": 37.329
+    },
+    {
+      "model": "sentence-transformers/all-MiniLM-L12-v2",
+      "available": true,
+      "purity_at_k": 0.6783,
+      "rows_per_sec": 94.2,
+      "embed_dim": 384,
+      "seconds_for_sample": 31.844
+    },
+    {
+      "model": "sentence-transformers/paraphrase-MiniLM-L3-v2",
+      "available": true,
+      "purity_at_k": 0.7067,
+      "rows_per_sec": 242.6,
+      "embed_dim": 384,
+      "seconds_for_sample": 12.366
+    },
+    {
+      "model": "BAAI/bge-small-en-v1.5",
+      "available": true,
+      "purity_at_k": 0.8817,
+      "rows_per_sec": 96.8,
+      "embed_dim": 384,
+      "seconds_for_sample": 30.991
+    },
+    {
+      "model": "sentence-transformers/all-mpnet-base-v2",
+      "available": true,
+      "purity_at_k": 0.8439,
+      "rows_per_sec": 30.0,
+      "embed_dim": 768,
+      "seconds_for_sample": 100.108
+    }
+  ],
+  "selected_model": "BAAI/bge-small-en-v1.5",
+  "selection_reason": "highest neighbour purity (0.8817) among available backends at k=10; 96.8 rows/sec used as tiebreak",
+  "note": "HF candidates show available=false in this sandbox (no network access to huggingface.co); re-run on a machine with internet to get a real HF comparison - the offline result below is what augmentation/synthesize.py was actually run with."
+}

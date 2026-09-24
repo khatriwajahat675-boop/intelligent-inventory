@@ -1,0 +1,19 @@
+{
+  "skus": 64,
+  "models_selected": {
+    "arima": 24,
+    "moving_average": 15,
+    "naive": 10,
+    "prophet": 8,
+    "dow_mean": 6,
+    "seasonal_naive": 1
+  },
+  "status": {
+    "approved": 54,
+    "baseline": 10
+  },
+  "mean_test_wape_selected": 0.448,
+  "mean_test_wape_naive": 0.5794,
+  "skus_where_selected_beats_naive_on_test": 45,
+  "note": "ARIMA/Prophet skipped automatically if statsmodels/prophet are not installed (see failures)"
+}

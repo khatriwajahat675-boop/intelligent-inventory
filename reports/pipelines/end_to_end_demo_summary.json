@@ -1,0 +1,22 @@
+{
+  "model_registry_entries": 12,
+  "products_seeded": 1064,
+  "inventory_snapshots": 1512,
+  "sales_transactions": 70116,
+  "recommendations_created": 387,
+  "open_alerts": 1025,
+  "audit_events": 513,
+  "automation_summary": {
+    "run_at": "2026-09-23T07:14:42.076293+00:00",
+    "skus_evaluated": 1512,
+    "skipped_no_master_data": 0,
+    "diminishing_stock_alerts": 126,
+    "recommendations_created": 387,
+    "blocked": 0,
+    "open_alerts_by_severity": {
+      "critical": 40,
+      "high": 139,
+      "medium": 21
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "started_at": "2026-09-23T07:09:18.640516+00:00",
+  "datasets": [
+    {
+      "dataset": "grocery",
+      "best_model": "hist_gradient_boosting",
+      "best_test_f1": 0.8657
+    },
+    {
+      "dataset": "fmcg",
+      "best_model": "decision_tree",
+      "best_test_f1": 0.0322,
+      "note": "label unlearnable - see docs/STATUS.md"
+    }
+  ],
+  "grocery_seed_counts": {
+    "products": 1000,
+    "suppliers": 10
+  },
+  "fmcg_master_seed_counts": {
+    "products": 64,
+    "suppliers": 8,
+    "inventory_snapshots": 512
+  },
+  "fmcg_sales_seed_counts": {
+    "accepted": 70116,
+    "duplicates": 0
+  },
+  "finished_at": "2026-09-23T07:11:57.869771+00:00"
+}
